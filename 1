@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+//Structure for linked List
+
+typedef struct node{
+	int inodeData;
+	struct node *pNextNode;
+}node_t;
+
+
+//Insert Node at beginning of node
+void pushBegin(node_t **pHead, int iData)
+{
+	node_t *new_node = (node_t *)malloc(sizeof(node_t));
+	new_node->inodeData = iData;
+	new_node->pNextNode =  *pHead;
+	*pHead = new_node;	
+}
+
+
+
+//Insert node at the end
+
+
+
+
+//Insert node after N node
+
+
+
+
+//Show Linked List
+void showLinkedList(node_t *pHead)
+{
+	while(pHead != NULL){
+		printf("[%d]\t",pHead->inodeData);
+		pHead = pHead->pNextNode;
+	}
+}
+
+
+
+
+//Main program

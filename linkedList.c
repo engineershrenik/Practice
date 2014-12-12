@@ -68,6 +68,31 @@ void addNodeAfterN(node_t *p_prevNode, int iData)
 }
 
 
+//Delete a Node from list with given Key value
+void deleteNodewithKey( node_t **pHeadRef, int iKeyValue )
+{
+	node_t *pTemp = *pHeadRef, *p_prevNode;
+
+	if(*pHeadRef == NULL)return;
+	
+	if(pTemp !=NULL && pTemp->inodeData == iKeyValue )
+	{
+		*pHeadRef = pTemp->pNextNode;
+		free(pTemp);
+		return;
+	}
+	
+	while( pTemp != NULL && pTemp->inodeData != iKeyValue )
+		{
+			p_prevNode = pTemp;
+			pTemp = pTemp->pNextNode;			
+		}
+
+	p_prevNode->pNextNode = pTemp->pNextNode;
+	free(pTemp);
+}
+
+
 
 //Show Linked List
 void showLinkedList(node_t *pHead)
@@ -76,6 +101,7 @@ void showLinkedList(node_t *pHead)
 		printf("[%d]\t",pHead->inodeData);
 		pHead = pHead->pNextNode;
 	}
+	printf("\n");
 }
 
 
@@ -92,5 +118,7 @@ int main()
 	pushEnd(&test, 54);
 	addNodeAfterN(test->pNextNode,88);
 	pushEnd(&test, 99);
+	showLinkedList(test);
+	deleteNodewithKey(&test,54);
 	showLinkedList(test);
 }
